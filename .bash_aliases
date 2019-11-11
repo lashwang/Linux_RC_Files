@@ -51,18 +51,18 @@ build_gs_frameworks(){
 }
 
 mmp_gs_frameworks(){
-    croot;
-    cd vendor/grandstream/frameworks/GsCore;
-    touch src/main/java/com/gs/core/security/GsSecurityManager.java;
-    mm;
-    croot;
-    cd vendor/grandstream/frameworks/GsCoreService;
-    touch src/main/java/com/gs/core/service/security/GsSecurityService.java;
-    mm;
-    croot;
-    cd frameworks/base/services/;
-    mmp;
-    croot;
+    croot ;
+    cd vendor/grandstream/frameworks/GsCore ;
+    touch src/main/java/com/gs/core/security/GsSecurityManager.java ;
+    mm ;
+    croot ;
+    cd vendor/grandstream/frameworks/GsCoreService ;
+    touch src/main/java/com/gs/core/service/security/GsSecurityService.java ;
+    mm ;
+    croot ;
+    cd frameworks/base/services/ ;
+    mmp ;
+    croot ;
 }
 
 mmp_gs_api_demo(){
