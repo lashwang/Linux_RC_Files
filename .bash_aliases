@@ -131,3 +131,5 @@ alias gst-grep=git_status_grep
 alias mmp-gs-frameworks=mmp_gs_frameworks
 alias adb-shut="adb disconnect"
 alias mmp-gs-api-demo=mmp_gs_api_demo
+alias repo-sync="repo forall -c 'git pull'"
+
