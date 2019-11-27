@@ -96,9 +96,20 @@ git_status_grep(){
 }
 
 
+read_so(){
+    readelf -d $1 | grep "Shared library"
+}
+
+
+gen_ide(){
+    croot ;
+    mmm development/tools/idegen/ ;
+    development/tools/idegen/idegen.sh ;
+}
+
 
 alias start-natapp='setsid natapp -authtoken=c9a5af4d0306d7d8 -log=stdout'
-alias repo-upload='repo upload --re="gwzhang,gxzhang,ahluo,xlli,bxpan" --no-verify'
+alias repo-upload='repo upload --re="gwzhang,gxzhang,ahluo,xlli,bxpan,cchma,ygcao" --no-verify'
 export PYTHONHTTPSVERIFY=0
 export SOONG_GEN_CMAKEFILES=1
 export SOONG_GEN_CMAKEFILES_DEBUG=1
@@ -133,3 +144,6 @@ alias adb-shut="adb disconnect"
 alias mmp-gs-api-demo=mmp_gs_api_demo
 alias repo-sync="repo forall -c 'git pull'"
 alias start-ss="sudo sslocal -c /etc/shadowsocks/config.json -d start"
+alias read-so=read_so 
+alias git-status-grep=git_status_grep
+alias gen-ide=gen_ide
