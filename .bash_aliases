@@ -147,3 +147,4 @@ alias start-ss="sudo sslocal -c /etc/shadowsocks/config.json -d start"
 alias read-so=read_so 
 alias git-status-grep=git_status_grep
 alias gen-ide=gen_ide
+alias gen-ca-newhash="openssl x509 -subject_hash -noout -in "
