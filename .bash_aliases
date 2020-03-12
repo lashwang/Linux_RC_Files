@@ -30,12 +30,22 @@ get_h60(){
     curl http://192.168.120.236/hz/firmware/GVC3210/H60/"$1"_h60/classfw.bin > /tmp/h60.bin
 }
 
+read_x509(){
+    openssl x509 -in $1 -text -noout
+}
+
+gen_old_hash_ca(){
+    cp $1 `openssl x509 -subject_hash_old -in $1 -noout`.0
+}
+
+
 build_target(){
     export LC_ALL=C ;
     source build/envsetup.sh ;
     lunch $1 ;
     make update-api && make ;
 }
+
 
 build_gs_frameworks(){
     croot ;
@@ -142,9 +152,17 @@ alias gst-grep=git_status_grep
 alias mmp-gs-frameworks=mmp_gs_frameworks
 alias adb-shut="adb disconnect"
 alias mmp-gs-api-demo=mmp_gs_api_demo
-alias repo-sync="repo forall -c 'git pull'"
+alias repo-sync="repo forall -c 'git remote -v;git pull'"
 alias start-ss="sudo sslocal -c /etc/shadowsocks/config.json -d start"
 alias read-so=read_so 
 alias git-status-grep=git_status_grep
 alias gen-ide=gen_ide
 alias gen-ca-newhash="openssl x509 -subject_hash -noout -in "
+alias gen-ca-oldhash="openssl x509 -subject_hash_old -noout -in"
+alias arm-linux-androideabi-nm="/opt/android/ndk/android-ndk-r12b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-nm"
+alias query_crash_addr="addr2line -p -C -i -f -e"
+alias read-x509=read_x509
+alias android-build="make update-api;make"
+alias convert-ca-to-hash=gen_old_hash_ca
+
+
