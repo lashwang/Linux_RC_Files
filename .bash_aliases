@@ -22,6 +22,8 @@ adb_send_broadcast(){
 }
 
 aosp_init(){
+    export LC_ALL=C ;
+    export ANDROID_COMPILE_WITH_JACK=false ;
     source ./build/envsetup.sh ;
     lunch ;
 }
@@ -164,5 +166,5 @@ alias query_crash_addr="addr2line -p -C -i -f -e"
 alias read-x509=read_x509
 alias android-build="make update-api;make"
 alias convert-ca-to-hash=gen_old_hash_ca
-
+alias adb="/usr/bin/adb" 
 
